@@ -35,7 +35,7 @@ class Product
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Menu::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Menu::class, inversedBy="products", cascade={"persist"})
      */
     private $menu;
 
