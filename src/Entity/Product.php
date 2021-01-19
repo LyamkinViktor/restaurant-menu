@@ -2,10 +2,22 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *     "get"={},
+ *     "post"={},
+ *     },
+ *     itemOperations={
+ *     "get"={},
+ *     "put"={},
+ *     "delete"={},
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
