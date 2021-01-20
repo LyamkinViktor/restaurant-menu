@@ -16,13 +16,26 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class AppFixtures extends Fixture
 {
+    /**
+     * @var UserPasswordEncoderInterface
+     */
     private $encoder;
 
+    /**
+     * AppFixtures constructor.
+     *
+     * @param UserPasswordEncoderInterface $encoder Password encoder.
+     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
 
+    /**
+     * Load fixtures
+     *
+     * @param ObjectManager $manager Object manager instance.
+     */
     public function load(ObjectManager $manager): void
     {
         //Create admin user:

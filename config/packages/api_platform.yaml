@@ -5,3 +5,5 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    title: 'Restaurant menu'
+    version: '1.0.0'

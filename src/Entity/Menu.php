@@ -18,6 +18,10 @@ use Doctrine\ORM\Mapping as ORM;
  *     "get"={},
  *     "put"={},
  *     "delete"={},
+ *     },
+ *     attributes={
+*      "formats"={"json"},
+ *     "pagination_enabled"=false
  *     }
  * )
  * @ORM\Entity(repositoryClass=MenuRepository::class)
