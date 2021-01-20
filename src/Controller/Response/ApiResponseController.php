@@ -15,14 +15,16 @@ class ApiResponseController extends AbstractController
     /**
      * If success.
      *
+     * @param string|null $description Success description.
+     *
      * @return JsonResponse
      */
-    public static function success(): JsonResponse
+    public static function success(?string $description): JsonResponse
     {
         return new JsonResponse(
             [
                 'status'      => 'Success',
-                'description' => 'Operation completed',
+                'description' => $description ?? 'Operation completed',
             ],
             Response::HTTP_OK,
         );
@@ -38,7 +40,7 @@ class ApiResponseController extends AbstractController
         return new JsonResponse(
             [
                 'status'      => 'Not found',
-                'description' => 'No such item found',
+                'description' => 'Resource not found',
             ],
             Response::HTTP_NOT_FOUND,
         );

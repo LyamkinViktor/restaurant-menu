@@ -2,22 +2,21 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Menu;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * Class RegistrationFormType
+ * Class MenuFormType
  * @package App\Form
  */
-class RegistrationFormType extends AbstractType
+class MenuFormType extends AbstractType
 {
     /**
-     * Build registration form.
+     * Build menu form.
      *
      * @param FormBuilderInterface $builder Form builder interface.
      * @param array                $options Options.
@@ -25,20 +24,17 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('plainPassword', PasswordType::class, [
-                'mapped' => false,
+            ->add('name', null, [
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
                     new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        'max' => 4096,
+                        'min' => 3,
+                        'max' => 100,
+                        'maxMessage' => 'The title is too long',
                     ]),
                 ],
             ])
+            ->add('enabledFrom')
+            ->add('enabledUntil')
         ;
     }
 
@@ -48,7 +44,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Menu::class,
         ]);
     }
 }

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Menu
+{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes %}
+        <div>{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Menu editing</h1>
+
+    <div>
+        {{ form_start(menuForm) }}
+        {{ form_row(menuForm.name) }}
+        {{ form_row(menuForm.enabledFrom) }}
+        {{ form_row(menuForm.enabledUntil) }}
+
+        <button type="submit">Save</button>
+        {{ form_end(menuForm) }}
+    </div>
+
+    <div>
+        <a href="{{ path('admin-panel') }}">Back</a>
+    </div>
+{% endblock %}

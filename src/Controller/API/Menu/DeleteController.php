@@ -34,10 +34,10 @@ class DeleteController extends AbstractController
                 $menu->removeProduct($product);
                 $entityManager->remove($product);
             }
-            $entityManager->remove($menu);
-            $entityManager->flush();
         }
+        $entityManager->remove($menu);
+        $entityManager->flush();
 
-        return ApiResponseController::success();
+        return ApiResponseController::success('Menu resource deleted');
     }
 }

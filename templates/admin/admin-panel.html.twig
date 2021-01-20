@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+<h1>Admin panel</h1>
+    <div>
+        <a href="{{ path('update-menu') }}">Create menu</a>
+    </div>
+<hr>
+    <div>
+        {% for menu in menus %}
+        <div>
+            <h3>{{ menu.name }}</h3>
+            <a href="{{ path('update-menu', {'id': menu.id}) }}">Edit</a>
+            <a href="{{ path('delete-menu', {'id': menu.id}) }}">Delete</a>
+            <a href="#">Add product</a>
+        </div>
+        <div>
+            <ul>
+            {% for product in menu.products %}
+                <li>
+                    <span>{{ product.name }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        <hr>
+    </div>
+
+{% if app.user %}
+    <p>
+        You are logged in as: {{ last_username }}<br>
+        <a href="{{ path('app_logout') }}">Logout</a>
+    </p>
+{% endif %}
+{% endblock %}
